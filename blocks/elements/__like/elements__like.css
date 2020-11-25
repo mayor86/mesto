@@ -1,0 +1,11 @@
+.elements__like {
+  width: 21px;
+  height: 19px;
+  background: url(../../../images/like.png);
+  transition: background .5s linear;
+}
+
+.elements__like:hover {
+  background: url(../../../images/like_hover.png);
+  cursor: pointer;
+}

@@ -1,0 +1,17 @@
+.popup__close-button {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  background: #000000;
+  background-image: url(../../../images/popup-close_button.png);
+  background-size: 40px;
+  border: none;
+  transition: background-image .5s linear;
+}
+
+.popup__close-button:hover {
+  background-image: url(../../../images/popup-close_button_hover.png);
+  cursor: pointer;
+}

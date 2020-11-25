@@ -1,0 +1,5 @@
+.profile__zone {
+  max-width: 336px;
+  display: flex;
+  flex-direction: column;
+}

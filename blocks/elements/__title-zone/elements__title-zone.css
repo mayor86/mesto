@@ -1,0 +1,15 @@
+.elements__title-zone {
+  background: #FFFFFF;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 25px 15px 31px 21px;
+  padding: 0;
+}
+
+@media screen and (max-width: 650px) {
+  .elements__title-zone {
+    max-width: 246px;
+    margin: 25px 15px 32px 21px;
+  }
+}
