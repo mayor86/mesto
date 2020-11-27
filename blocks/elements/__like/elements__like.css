@@ -1,11 +1,14 @@
 .elements__like {
   width: 21px;
   height: 19px;
-  background: url(../../../images/like.png);
-  transition: background .5s linear;
+  background: #FFFFFF;
+  background-image: url(../../../images/like.svg);
+  transition: opacity .5s linear;
+  border: none;
+  outline: none;
 }
 
 .elements__like:hover {
-  background: url(../../../images/like_hover.png);
+  opacity: .5;
   cursor: pointer;
 }

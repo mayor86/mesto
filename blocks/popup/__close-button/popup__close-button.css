@@ -5,13 +5,21 @@
   top: -40px;
   right: -40px;
   background: #000000;
-  background-image: url(../../../images/popup-close_button.png);
   background-size: 40px;
   border: none;
-  transition: background-image .5s linear;
+  transition: opacity .5s linear;
 }
 
 .popup__close-button:hover {
-  background-image: url(../../../images/popup-close_button_hover.png);
   cursor: pointer;
+  opacity: .6;
+}
+
+@media screen and (max-width: 650px) {
+  .popup__close-button {
+    width: 26px;
+    height: 26px;
+    top: -26px;
+    right: -26px;
+  }
 }

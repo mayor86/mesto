@@ -3,12 +3,15 @@
   height: 24px;
   margin: 0;
   padding: 0;
-  background: url(../../../images/profile-edit_button.png);
-  transition: background .5s linear;
+  transition: opacity .5s linear;
+  box-sizing: border-box;
+  background: #000000;
+  border: none;
+  background-image: url(../../../images/profile-edit_button.svg);
 }
 
 .profile__edit-button:hover {
-  background: url(../../../images/profile-edit_button_hover.png);
+  opacity: .6;
   cursor: pointer;
 }
 
@@ -16,6 +19,6 @@
   .profile__edit-button {
     width: 18px;
     height: 18px;
-    background: url(../../../images/profile-edit_button_mobile.png);
+    background-image: url(../../../images/profile-edit_button_mobile.svg);
   }
 }

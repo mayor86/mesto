@@ -12,79 +12,80 @@
 
 <body class="root">
   <div class="page">
-    <div class="header">
-      <img src="images/mesto-logo.png" alt="Mesto логотип" class="logo">
-      <hr class="header__line">
-    </div>
-    <section class="profile">
-      <div class="profile__info">
-        <img src="images/profile-avatar.png" alt="Аватар" class="profile__avatar">
-        <div class="profile__zone">
-          <div class="profile__zone-header">
-            <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <div class="profile__edit-button"></div>
+    <header class="header">
+      <img src="images/mesto-logo.svg" alt="Mesto логотип" class="logo">
+    </header>
+    <main class="content">
+      <section class="profile">
+        <div class="profile__info">
+          <img src="images/profile-avatar.png" alt="Аватар" class="profile__avatar">
+          <div class="profile__zone">
+            <div class="profile__zone-header">
+              <h1 class="profile__title">Жак-Ив Кусто</h1>
+              <button class="profile__edit-button" type="button"></button>
+            </div>
+            <p class="profile__subtitle">Исследователь океана</p>
           </div>
-          <p class="profile__subtitle">Исследователь океана</p>
         </div>
-      </div>
-      <div class="profile__add-button"></div>
-    </section>
-    <section class="elements">
-      <div class="elements__item">
-        <img src="images/elements-moscow.jpg" alt="Москва" class="elements__photo">
-        <div class="elements__title-zone">
-          <h3 class="elements__title">Москва</h3>
-          <div class="elements__like"></div>
+        <button class="profile__add-button" type="button"></button>
+      </section>
+      <section class="elements">
+        <div class="elements__item">
+          <img src="images/elements-moscow.jpg" alt="Москва" class="elements__photo">
+          <div class="elements__title-zone">
+            <h3 class="elements__title">Москва</h3>
+            <button class="elements__like" type="button"></button>
+          </div>
         </div>
-      </div>
-      <div class="elements__item">
-        <img src="images/elements-piter.jpg" alt="Санкт-Петербург" class="elements__photo">
-        <div class="elements__title-zone">
-          <h3 class="elements__title">Санкт-Петербург</h3>
-          <div class="elements__like"></div>
+        <div class="elements__item">
+          <img src="images/elements-piter.jpg" alt="Санкт-Петербург" class="elements__photo">
+          <div class="elements__title-zone">
+            <h3 class="elements__title">Санкт-Петербург</h3>
+            <button class="elements__like" type="button"></button>
+          </div>
         </div>
-      </div>
-      <div class="elements__item">
-        <img src="images/elements-ural.jpg" alt="Урал" class="elements__photo">
-        <div class="elements__title-zone">
-          <h3 class="elements__title">Урал</h3>
-          <div class="elements__like"></div>
+        <div class="elements__item">
+          <img src="images/elements-ural.jpg" alt="Урал" class="elements__photo">
+          <div class="elements__title-zone">
+            <h3 class="elements__title">Урал</h3>
+            <button class="elements__like" type="button"></button>
+          </div>
         </div>
-      </div>
-      <div class="elements__item">
-        <img src="images/elements-volga.jpg" alt="Волга" class="elements__photo">
-        <div class="elements__title-zone">
-          <h3 class="elements__title">Волга</h3>
-          <div class="elements__like"></div>
+        <div class="elements__item">
+          <img src="images/elements-volga.jpg" alt="Волга" class="elements__photo">
+          <div class="elements__title-zone">
+            <h3 class="elements__title">Волга</h3>
+            <button class="elements__like" type="button"></button>
+          </div>
         </div>
-      </div>
-      <div class="elements__item">
-        <img src="images/elements-baikal.jpg" alt="Байкал" class="elements__photo">
-        <div class="elements__title-zone">
-          <h3 class="elements__title">Байкал</h3>
-          <div class="elements__like"></div>
+        <div class="elements__item">
+          <img src="images/elements-baikal.jpg" alt="Байкал" class="elements__photo">
+          <div class="elements__title-zone">
+            <h3 class="elements__title">Байкал</h3>
+            <button class="elements__like" type="button"></button>
+          </div>
         </div>
-      </div>
-      <div class="elements__item">
-        <img src="images/elements-sakhalin.jpg" alt="Сахалин" class="elements__photo">
-        <div class="elements__title-zone">
-          <h3 class="elements__title">Сахалин</h3>
-          <div class="elements__like"></div>
+        <div class="elements__item">
+          <img src="images/elements-sakhalin.jpg" alt="Сахалин" class="elements__photo">
+          <div class="elements__title-zone">
+            <h3 class="elements__title">Сахалин</h3>
+            <button class="elements__like" type="button"></button>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
   </div>
 
   <div class="popup">
-    <form class="popup__container">
+    <form class="popup__container" name="profile-popup">
       <h3 class="popup__title">Редактировать профиль</h3>
-      <input type="text" class="popup__name">
-      <input type="text" class="popup__job">
+      <input type="text" class="popup__input-el" name="profile-name">
+      <input type="text" class="popup__input-el" name="profile-job">
       <button type="submit" class="popup__submit-button">Сохранить</button>
-      <button type="button" class="popup__close-button"></button>
+      <img src="images/popup-close_button.svg" alt="Кнопка закрытия диалогового окна" class="popup__close-button">
     </form>
   </div>
   <script src="scripts/index.js"></script>
