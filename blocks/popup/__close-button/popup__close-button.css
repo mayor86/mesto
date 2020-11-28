@@ -8,6 +8,7 @@
   background-size: 40px;
   border: none;
   transition: opacity .5s linear;
+  background-image: url(../../../images/popup-close_button.svg);
 }
 
 .popup__close-button:hover {
@@ -17,9 +18,8 @@
 
 @media screen and (max-width: 650px) {
   .popup__close-button {
-    width: 26px;
-    height: 26px;
-    top: -26px;
-    right: -26px;
+    top: -40px;
+    right: 0;
+    background-image: url(../../../images/popup-close_button_mobile.svg);
   }
 }

@@ -1,6 +1,5 @@
 .popup__input-el {
   width: 358px;
-  height: 14px;
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
@@ -8,7 +7,7 @@
   line-height: 1.21;
   margin: 0 auto 0 auto;
   border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 1);
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
   padding: 0;
 }
 
@@ -29,5 +28,4 @@
   .popup__container .popup__input-el:nth-of-type(1) {
     margin-top: 75px;
   }
-  
 }
