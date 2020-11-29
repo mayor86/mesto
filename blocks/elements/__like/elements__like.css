@@ -6,6 +6,7 @@
   transition: opacity .5s linear;
   border: none;
   outline: none;
+  margin: 0;
 }
 
 .elements__like:hover {

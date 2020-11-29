@@ -4,7 +4,7 @@
   position: absolute;
   top: -40px;
   right: -40px;
-  background: #000000;
+  background: transparent;
   background-size: 40px;
   border: none;
   transition: opacity .5s linear;
