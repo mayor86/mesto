@@ -5,8 +5,10 @@
   transition: opacity .5s linear;
   background: #000000;
   background-image: url(../../../images/profile-add_button.svg);
-  border: none;
   padding: 0;
+  border: 2px solid #FFFFFF;
+  box-sizing: border-box;
+  border-radius: 2px;
 }
 
 .profile__add-button:hover {

@@ -1,4 +1,4 @@
-.popup__close-button {
+.popup-card__close-button {
   width: 40px;
   height: 40px;
   position: absolute;
@@ -18,9 +18,9 @@
 }
 
 @media screen and (max-width: 650px) {
-  .popup__close-button {
-    top: -40px;
-    right: 0;
+  .popup-card__close-button {
+    top: -30px;
+    right: -30px;
     background-image: url(../../../images/popup-close_button_mobile.svg);
   }
 }

@@ -1,0 +1,12 @@
+.popup-card__image {
+  width: 75vw;
+  height: 75vh;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 650px) {
+  .popup-card__image {
+    max-width: 240px;
+    max-height: 299px;
+  }
+}

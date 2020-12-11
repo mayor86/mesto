@@ -1,0 +1,11 @@
+.elements__remove-item {
+  width: 18px;
+  height: 19px;
+  background-image: url(../../../images/remove-card.svg);
+  border: none;
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  object-fit: cover;
+  background-color: transparent;
+}

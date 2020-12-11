@@ -1,0 +1,5 @@
+.popup__like_checked {
+  background-image: url(../../../../images/like_checked.svg);
+  width: 20px;
+  height: 18px;
+}
