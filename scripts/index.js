@@ -36,6 +36,7 @@ function createCard (card) {
   elementLike.addEventListener('click', setLikeHandler);
   elementTrash.addEventListener('click', removeCard);
   elementPhoto.addEventListener('click', showImagePopup);
+  elementPhoto.popup = popupParentImageNode;
 
   return elementItem;
 }
@@ -50,18 +51,19 @@ function setLikeHandler(evt) {
 
 function showPopup(evt) {
   window.clickedElId = evt.target.id;
+  const popup = evt.target.popup;
 
   if (window.clickedElId === 'edit-profile-btn') {
     popupNameNode.value = titleProfileNode.textContent;
     popupJobNode.value = subtitleProfileNode.textContent;
-    popupParentEditProfile.classList.add('popup_opened');
-  } else if (window.clickedElId === 'add-card-btn') {
+  } 
+  
+  if (window.clickedElId === 'add-card-btn') {
     popupPlaceNode.value = '';
     popupLinkNode.value = '';
-    popupParentAddCard.classList.add('popup_opened');
-  } else { // кликнули по изображению
-    popupParentImageNode.classList.add('popup_opened');
   }
+
+  popup.classList.add('popup_opened');
 }
 
 function showImagePopup(evt) {
@@ -106,7 +108,11 @@ function submitPopupHandler(evt) {
 
 // слушатели
 editButton.addEventListener('click', showPopup);
+editButton.popup = popupParentEditProfile;
+
 addButton.addEventListener('click', showPopup);
+addButton.popup = popupParentAddCard;
+
 popupImageCloseBtn.addEventListener('click', closePopup);
 popupCloseBtns.forEach(btn => {
   btn.addEventListener('click', closePopup);
