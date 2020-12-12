@@ -1,4 +1,4 @@
-.popup-card__close-button {
+.popup-image__close-button {
   width: 40px;
   height: 40px;
   position: absolute;
@@ -12,13 +12,13 @@
   outline: none;
 }
 
-.popup__close-button:hover {
+.popup-image__close-button:hover {
   cursor: pointer;
   opacity: .6;
 }
 
 @media screen and (max-width: 650px) {
-  .popup-card__close-button {
+  .popup-image__close-button {
     top: -30px;
     right: -30px;
     background-image: url(../../../images/popup-close_button_mobile.svg);

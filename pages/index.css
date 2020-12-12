@@ -16,7 +16,9 @@
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/popup/popup.css);
-@import url(../blocks/popup-card/popup-card.css);
+@import url(../blocks/popup-image/popup-image.css);
+@import url(../blocks/popup-add-card/popup-add-card.css);
+@import url(../blocks/popup-edit-profile/popup-edit-profile.css);
 
 
 /* Импорт элементов */
@@ -40,13 +42,12 @@
 @import url(../blocks/popup/__input-el/popup__input-el.css);
 @import url(../blocks/popup/__submit-button/popup__submit-button.css);
 @import url(../blocks/popup/__close-button/popup__close-button.css);
-@import url(../blocks/popup-card/__container/popup-card__container.css);
-@import url(../blocks/popup-card/__title/popup-card__title.css);
-@import url(../blocks/popup-card/__image/popup-card__image.css);
-@import url(../blocks/popup-card/__close-button/popup-card__close-button.css);
+@import url(../blocks/popup-image/__container/popup-image__container.css);
+@import url(../blocks/popup-image/__title/popup-image__title.css);
+@import url(../blocks/popup-image/__image/popup-image__image.css);
+@import url(../blocks/popup-image/__close-button/popup-image__close-button.css);
 
 /* Импорт модификаторов */
 @import url(../blocks/popup/_opened/popup_opened.css);
-@import url(../blocks/popup-card/_opened/popup-card_opened.css);
 @import url(../blocks/elements/__like/_checked/popup__like_checked.css);
 
