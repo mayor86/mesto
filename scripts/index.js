@@ -64,6 +64,7 @@ function showPopup(evt) {
   }
 
   popup.classList.add('popup_opened');
+  popup.classList.remove('popup_closed');
 }
 
 function showImagePopup(evt) {
@@ -81,8 +82,10 @@ function removeCard(evt) {
 }
 
 function closePopup(evt) {
-  const currentParentNode = evt.target.parentElement.parentElement;
-  currentParentNode.classList.remove('popup_opened');
+//  const currentParentNode = evt.target.parentElement.parentElement;
+  const popup = evt.target.popup;
+  popup.classList.remove('popup_opened');
+  popup.classList.add('popup_closed');
 }
 
 function submitPopupHandler(evt) {
@@ -92,18 +95,16 @@ function submitPopupHandler(evt) {
   if (window.clickedElId === 'edit-profile-btn') {
     titleProfileNode.textContent = popupNameNode.value;
     subtitleProfileNode.textContent = popupJobNode.value;
-
-    popupParentEditProfile.classList.remove('popup_opened');
   }
 
   if (window.clickedElId === 'add-card-btn') {
     let newCard = {};
     newCard.name = popupPlaceNode.value;
     newCard.link = popupLinkNode.value;
-    addCard(createCard(newCard));
 
-    popupParentAddCard.classList.remove('popup_opened');
+    addCard(createCard(newCard));
   }
+  closePopup(evt);
 }
 
 // слушатели
@@ -114,10 +115,29 @@ addButton.addEventListener('click', showPopup);
 addButton.popup = popupParentAddCard;
 
 popupImageCloseBtn.addEventListener('click', closePopup);
+popupImageCloseBtn.popup = popupParentImageNode;
+
 popupCloseBtns.forEach(btn => {
   btn.addEventListener('click', closePopup);
+ 
+  if (btn.parentElement.parentElement.classList.contains('popup-edit-profile')) {
+    btn.popup = popupParentEditProfile;
+  }
+
+  if (btn.parentElement.parentElement.classList.contains('popup-add-card')) {
+    btn.popup = popupParentAddCard;
+  }
+
 });
 
 submitFormNodes.forEach(form => {
   form.addEventListener('submit', submitPopupHandler);
+ 
+  if (form.parentElement.classList.contains('popup-edit-profile')) {
+    form.popup = popupParentEditProfile;
+  }
+
+  if (form.parentElement.classList.contains('popup-add-card')) {
+    form.popup = popupParentAddCard;
+  }
 });
