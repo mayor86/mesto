@@ -49,6 +49,5 @@
 
 /* Импорт модификаторов */
 @import url(../blocks/popup/_opened/popup_opened.css);
-@import url(../blocks/popup/_closed/popup_closed.css);
 @import url(../blocks/elements/__like/_checked/popup__like_checked.css);
 

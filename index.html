@@ -22,12 +22,12 @@
           <div class="profile__zone">
             <div class="profile__zone-header">
               <h1 class="profile__title">Жак-Ив Кусто</h1>
-              <button class="profile__edit-button" type="button" id="edit-profile-btn"></button>
+              <button class="profile__edit-button" type="button"></button>
             </div>
             <p class="profile__subtitle">Исследователь океана</p>
           </div>
         </div>
-        <button class="profile__add-button" type="button" id="add-card-btn"></button>
+        <button class="profile__add-button" type="button"></button>
       </section>
       <section class="elements"></section>
     </main>
@@ -36,23 +36,23 @@
     </footer>
   </div>
 
-  <div class="popup popup-edit-profile popup_closed">
-    <form class="popup__container" name="profile-popup">
+  <div class="popup popup-edit-profile">
+    <form class="popup__container" name="edit-profile-popup">
       <h3 class="popup__title">Редактировать профиль</h3>
       <input type="text" class="popup__input-el" name="profile-name">
       <input type="text" class="popup__input-el" name="profile-job">
       <button type="submit" class="popup__submit-button">Сохранить</button>
-      <button type="button" class="popup__close-button"></button>
+      <button type="button" class="popup__close-button popup-edit-profile__close-button"></button>
     </form>
   </div>
 
-  <div class="popup popup-add-card popup_closed">
-    <form class="popup__container" name="profile-popup">
+  <div class="popup popup-add-card">
+    <form class="popup__container" name="add-card-popup">
       <h3 class="popup__title">Новое место</h3>
       <input type="text" class="popup__input-el" name="place-name" placeholder="Название">
       <input type="text" class="popup__input-el" name="link-image" placeholder="Ссылка на картинку">
       <button type="submit" class="popup__submit-button">Создать</button>
-      <button type="button" class="popup__close-button"></button>
+      <button type="button" class="popup__close-button popup-add-card__close-button"></button>
     </form>
   </div>
 
