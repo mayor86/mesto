@@ -19,6 +19,15 @@ const submitFormEditProfileNode = document.querySelector('.popup__container[name
 const submitFormAddCardNode = document.querySelector('.popup__container[name*=add-card-popup]');
 
 // функции
+function showPopup(popup) {
+  popup.classList.add('popup_opened');
+}
+
+function closePopup(popup) {
+  //  const popup = evt.target.popup;
+  popup.classList.remove('popup_opened');
+}
+
 function createCard(card) {
   const templateElementItem = document.querySelector('#element-item').content;
   const elementItem = templateElementItem.cloneNode(true);
@@ -46,39 +55,32 @@ function setLikeHandler(evt) {
   evt.target.classList.toggle('popup__like_checked');
 }
 
-function showPopup(evt) {
-  const popup = evt.target.popup;
-
-  if (popup === popupParentEditProfile) {
-    popupNameNode.value = titleProfileNode.textContent;
-    popupJobNode.value = subtitleProfileNode.textContent;
-  }
-
-  if (popup === popupParentAddCard) {
-    popupPlaceNode.value = '';
-    popupLinkNode.value = '';
-  }
-
-  popup.classList.add('popup_opened');
-}
-
 function showImagePopup(evt) {
   const currentImageNode = evt.target;
   popupImageTitleNode.textContent = currentImageNode.nextElementSibling.firstElementChild.textContent;
   popupImageNode.src = currentImageNode.src;
   popupImageNode.alt = currentImageNode.alt;
 
-  popupParentImageNode.classList.add('popup_opened');
+  showPopup(popupParentImageNode);
+}
+
+function showAddCardPopup() {
+  popupPlaceNode.value = '';
+  popupLinkNode.value = '';
+
+  showPopup(popupParentAddCard);
+}
+
+function showEditProfilePopup() {
+  popupNameNode.value = titleProfileNode.textContent;
+  popupJobNode.value = subtitleProfileNode.textContent;
+
+  showPopup(popupParentEditProfile);
 }
 
 function removeCard(evt) {
   const currentElementItemNode = evt.target.parentElement;
   currentElementItemNode.remove();
-}
-
-function closePopup(evt) {
-  const popup = evt.target.popup;
-  popup.classList.remove('popup_opened');
 }
 
 function submitPopupEditProfileHandler(evt) {
@@ -87,7 +89,7 @@ function submitPopupEditProfileHandler(evt) {
   titleProfileNode.textContent = popupNameNode.value;
   subtitleProfileNode.textContent = popupJobNode.value;
 
-  closePopup(evt);
+  closePopup(popupParentEditProfile);
 }
 
 function submitPopupAddCardHandler(evt) {
@@ -98,7 +100,7 @@ function submitPopupAddCardHandler(evt) {
   newCard.link = popupLinkNode.value;
 
   addCard(createCard(newCard));
-  closePopup(evt);
+  closePopup(popupParentAddCard);
 }
 
 // инициализация дефолтных карточек
@@ -107,23 +109,17 @@ initialCards.forEach(card => {
 })
 
 // слушатели
-editButton.addEventListener('click', showPopup);
-editButton.popup = popupParentEditProfile;
-
-addButton.addEventListener('click', showPopup);
-addButton.popup = popupParentAddCard;
-
-popupImageCloseBtn.addEventListener('click', closePopup);
-popupImageCloseBtn.popup = popupParentImageNode;
-
-popupEditProfileCloseBtn.addEventListener('click', closePopup);
-popupEditProfileCloseBtn.popup = popupParentEditProfile;
-
-popupAddCardCloseBtn.addEventListener('click', closePopup);
-popupAddCardCloseBtn.popup = popupParentAddCard;
-
+editButton.addEventListener('click', showEditProfilePopup);
+addButton.addEventListener('click', showAddCardPopup);
 submitFormEditProfileNode.addEventListener('submit', submitPopupEditProfileHandler);
-submitFormEditProfileNode.popup = popupParentEditProfile;
-
 submitFormAddCardNode.addEventListener('submit', submitPopupAddCardHandler);
-submitFormAddCardNode.popup = popupParentAddCard;
+
+popupImageCloseBtn.addEventListener('click', function () {
+  closePopup(popupParentImageNode);
+});
+popupEditProfileCloseBtn.addEventListener('click', function () {
+  closePopup(popupParentEditProfile);
+});
+popupAddCardCloseBtn.addEventListener('click', function () {
+  closePopup(popupParentAddCard);
+});
