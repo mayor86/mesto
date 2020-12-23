@@ -1,0 +1,5 @@
+.popup__input-el-error_active {
+  opacity: 1;
+  visibility: visible;
+  height: 12px;
+}

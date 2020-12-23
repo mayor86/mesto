@@ -1,0 +1,22 @@
+.popup__input-el-error {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.75rem;
+  line-height: 1.25;
+  color: #FF0000;
+  width: 358px;
+  margin: 5px auto 0 auto;
+  opacity: 0;
+  visibility: hidden;
+  padding: 0;
+  transition: opacity 0.3s linear;
+  height: 12px;
+}
+
+@media screen and (max-width: 650px) {
+  .popup__input-el-error {
+    width: 238px;
+    margin: auto;
+  }
+}

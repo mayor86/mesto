@@ -19,12 +19,32 @@ const submitFormEditProfileNode = document.querySelector('.popup__container[name
 const submitFormAddCardNode = document.querySelector('.popup__container[name*=add-card-popup]');
 
 // функции
+function closePopupOverlay(evt) {
+  if (evt.currentTarget === evt.target) {
+    closePopup(evt.currentTarget);
+  }
+}
+
+function closePopupEsc(evt, popup) {
+  if (evt.key === 'Escape') {
+    closePopup(popup);
+  }
+}
+
 function showPopup(popup) {
+  //Валидация кнопки при открытии попапа
+  if (popup !== popupParentImageNode) {
+    toggleButtonState(Array.from(popup.querySelectorAll('.popup__input-el')), popup.querySelector('.popup__submit-button'));
+  }
   popup.classList.add('popup_opened');
+
+  popup.addEventListener('click', closePopupOverlay);
+  document.addEventListener('keyup', function (evt) {
+    closePopupEsc(evt, popup);
+  });
 }
 
 function closePopup(popup) {
-  //  const popup = evt.target.popup;
   popup.classList.remove('popup_opened');
 }
 
