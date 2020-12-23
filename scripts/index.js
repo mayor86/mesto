@@ -19,18 +19,6 @@ const submitFormEditProfileNode = document.querySelector('.popup__container[name
 const submitFormAddCardNode = document.querySelector('.popup__container[name*=add-card-popup]');
 
 // функции
-function closePopupOverlay(evt) {
-  if (evt.currentTarget === evt.target) {
-    closePopup(evt.currentTarget);
-  }
-}
-
-function closePopupEsc(evt, popup) {
-  if (evt.key === 'Escape') {
-    closePopup(popup);
-  }
-}
-
 function showPopup(popup) {
   //Валидация кнопки при открытии попапа
   if (popup !== popupParentImageNode) {
@@ -46,6 +34,18 @@ function showPopup(popup) {
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+}
+
+function closePopupOverlay(evt) {
+  if (evt.currentTarget === evt.target) {
+    closePopup(evt.currentTarget);
+  }
+}
+
+function closePopupEsc(evt, popup) {
+  if (evt.key === 'Escape') {
+    closePopup(popup);
+  }
 }
 
 function createCard(card) {
@@ -87,6 +87,10 @@ function showImagePopup(evt) {
 function showAddCardPopup() {
   popupPlaceNode.value = '';
   popupLinkNode.value = '';
+
+  const formElement = popupParentAddCard.querySelector('.popup__container');
+  hideInputError(formElement, popupPlaceNode);
+  hideInputError(formElement, popupLinkNode);
 
   showPopup(popupParentAddCard);
 }
