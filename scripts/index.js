@@ -22,18 +22,18 @@ const submitFormAddCardNode = document.querySelector('.popup__container[name*=ad
 function showPopup(popup) {
   //Валидация кнопки при открытии попапа
   if (popup !== popupParentImageNode) {
-    toggleButtonState(Array.from(popup.querySelectorAll('.popup__input-el')), popup.querySelector('.popup__submit-button'));
+    toggleButtonState(Array.from(popup.querySelectorAll('.popup__input-el')), popup.querySelector('.popup__submit-button'), config);
   }
   popup.classList.add('popup_opened');
 
   popup.addEventListener('click', closePopupOverlay);
-  document.addEventListener('keyup', function (evt) {
-    closePopupEsc(evt, popup);
-  });
+  document.addEventListener('keyup', closePopupEsc);
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+
+  document.removeEventListener('keyup', closePopupEsc); // удаляем слушатель
 }
 
 function closePopupOverlay(evt) {
@@ -42,9 +42,9 @@ function closePopupOverlay(evt) {
   }
 }
 
-function closePopupEsc(evt, popup) {
+function closePopupEsc(evt) {
   if (evt.key === 'Escape') {
-    closePopup(popup);
+    closePopup(document.querySelector('.popup_opened'));
   }
 }
 
@@ -85,19 +85,23 @@ function showImagePopup(evt) {
 }
 
 function showAddCardPopup() {
-  popupPlaceNode.value = '';
-  popupLinkNode.value = '';
-
   const formElement = popupParentAddCard.querySelector('.popup__container');
-  hideInputError(formElement, popupPlaceNode);
-  hideInputError(formElement, popupLinkNode);
+
+  formElement.reset(); // сброс значений
+  hideInputError(formElement, popupPlaceNode, config);
+  hideInputError(formElement, popupLinkNode, config);
 
   showPopup(popupParentAddCard);
 }
 
 function showEditProfilePopup() {
+  const formElement = popupParentEditProfile.querySelector('.popup__container');
+
   popupNameNode.value = titleProfileNode.textContent;
   popupJobNode.value = subtitleProfileNode.textContent;
+
+  hideInputError(formElement, popupNameNode, config);
+  hideInputError(formElement, popupJobNode, config);
 
   showPopup(popupParentEditProfile);
 }
@@ -108,8 +112,6 @@ function removeCard(evt) {
 }
 
 function submitPopupEditProfileHandler(evt) {
-  evt.preventDefault();
-
   titleProfileNode.textContent = popupNameNode.value;
   subtitleProfileNode.textContent = popupJobNode.value;
 
@@ -117,8 +119,6 @@ function submitPopupEditProfileHandler(evt) {
 }
 
 function submitPopupAddCardHandler(evt) {
-  evt.preventDefault();
-
   const newCard = {};
   newCard.name = popupPlaceNode.value;
   newCard.link = popupLinkNode.value;
