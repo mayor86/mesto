@@ -18,12 +18,13 @@ export class Card {
 
   generateCard() {
     this._element = this._getTemplate();
+    this._cardImage = this._element.querySelector('.elements__photo');
 
     this._setEventListeners();
 
     this._element.querySelector('.elements__title').textContent = this._name;
-    this._element.querySelector('.elements__photo').alt = `Фото: ${this._name}`;
-    this._element.querySelector('.elements__photo').src = this._link;
+    this._cardImage.alt = `Фото: ${this._name}`;
+    this._cardImage.src = this._link;
 
     return this._element;
   }
@@ -38,10 +39,6 @@ export class Card {
       this._removeCard();
     });
 
-    this._element.querySelector('.elements__photo').addEventListener('click', () => {
-      this._showPopup();
-    });
-
   }
 
   _setLikeHandler() {
@@ -50,13 +47,5 @@ export class Card {
 
   _removeCard() {
     this._element.remove();
-  }
-
-  _showPopup() {
-    document.querySelector('.popup-image__title').textContent = this._element.querySelector('.elements__title').textContent;
-    document.querySelector('.popup-image__image').src = this._element.querySelector('.elements__photo').src;
-    document.querySelector('.popup-image__image').alt = this._element.querySelector('.elements__photo').alt;
-
-    document.querySelector('.popup-image').classList.add('popup_opened');
   }
 }
