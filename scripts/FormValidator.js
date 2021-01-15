@@ -20,12 +20,15 @@ export class FormValidator {
 
   resetValidation() {
     this._formElement.reset();
-
-    this._inputList.forEach(inputElement => {
+    
+    const inputList = Array.from(this._inputList);
+    inputList.forEach(inputElement => {
       inputElement.classList.remove(this._inputErrorClass);
       inputElement.nextElementSibling.classList.remove(this._errorClass);
       inputElement.nextElementSibling.textContent = '';
     })
+
+    this._toggleButtonState(inputList);
   }
 
   _setEventListeners() {
