@@ -1,8 +1,9 @@
 export class Card {
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, hahdleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
+    this._hahdleCardClick = hahdleCardClick;
   }
 
   // формирование шаблона карточки
@@ -38,6 +39,10 @@ export class Card {
     this._element.querySelector('.elements__remove-item').addEventListener('click', () => {
       this._removeCard();
     });
+
+    this._cardImage.addEventListener('click', () => {
+      this._hahdleCardClick(this._name, this._link);
+    })
 
   }
 
