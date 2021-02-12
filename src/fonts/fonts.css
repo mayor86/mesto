@@ -10,7 +10,7 @@
 
 @font-face {
   src: url(Inter-Medium.woff2) format('woff2'),
-       url(Inter-Meduum.woff) format('woff'),
+       url(Inter-Medium.woff) format('woff'),
        url(Inter-Medium.ttf) format('truetype');
   font-family: 'Inter';
   font-weight: 500;
@@ -20,8 +20,7 @@
 
 @font-face {
   src: url(Inter-Regular.woff2) format('woff2'),
-       url(Inter-Regular.woff) format('woff'),
-       url(Inter-Reqular.ttf) format('truetype');
+       url(Inter-Regular.woff) format('woff');
   font-family: 'Inter';
   font-weight: 400;
   font-display: swap;
