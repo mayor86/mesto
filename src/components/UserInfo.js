@@ -5,8 +5,6 @@ export class UserInfo {
   }) {
     this._name = document.querySelector(nameSelector);
     this._title = document.querySelector(titleSelector);
-    this._popupName = document.querySelector('.popup__input-el[name*=profile-name]');
-    this._popupTitle = document.querySelector('.popup__input-el[name*=profile-job]');
   }
 
   getUserInfo() {

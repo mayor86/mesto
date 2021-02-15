@@ -1,25 +1,25 @@
-import '../pages/index.css';
+//import '../pages/index.css';
 import {
   initialCards
 } from './initial-cards.js';
 import {
   Card
-} from '../components/Card.js';
+} from './Card.js';
 import {
   FormValidator
-} from '../components/FormValidator.js';
+} from './FormValidator.js';
 import {
   Section
-} from '../components/Section.js';
+} from './Section.js';
 import {
   PopupWithImage
-} from '../components/PopupWithImage.js';
+} from './PopupWithImage.js';
 import {
   PopupWithForm
-} from '../components/PopupWithForm.js';
+} from './PopupWithForm.js';
 import {
   UserInfo
-} from '../components/UserInfo.js';
+} from './UserInfo.js';
 
 const config = {
   formSelector: '.popup__container',
@@ -43,14 +43,8 @@ const popupJobNode = document.querySelector('.popup__input-el[name*=profile-job]
 const submitFormEditProfileNode = document.querySelector('.popup__container[name*=edit-profile-popup]');
 const submitFormAddCardNode = document.querySelector('.popup__container[name*=add-card-popup]');
 
-function resetValidation(formElement) {
-  const formValidatorElement = new FormValidator(config, formElement);
-  formValidatorElement.resetValidation();
-}
-
 function handleCardClick(name, link) {
-  const popupImage = new PopupWithImage(popupImageSelector, name, link);
-  popupImage.open();
+  popupImage.open(name, link);
   popupImage.setEventListeners();
 }
 
@@ -62,19 +56,17 @@ function createCard(card) {
 
 function showAddCardPopup() {
   addCardValidator.resetValidation();
-  popupAddCard.setEventListeners();
   popupAddCard.open();
 }
 
 function showEditProfilePopup() {
   profileValidator.resetValidation();
-
+ 
   const name = userInfo.getUserInfo().name;
   const title = userInfo.getUserInfo().title;
   popupNameNode.value = name;
   popupJobNode.value = title;
 
-  popupEditProfile.setEventListeners();
   popupEditProfile.open();
 }
 
@@ -109,8 +101,13 @@ const userInfo = new UserInfo({
   titleSelector: subTitleProfileSelector
 });
 
+const popupImage = new PopupWithImage(popupImageSelector);
+
 const popupAddCard = new PopupWithForm(popupAddCardSelector, submitPopupAddCardHandler);
+popupAddCard.setEventListeners();
+
 const popupEditProfile = new PopupWithForm(popupEditProfileSelector, submitPopupEditProfileHandler);
+popupEditProfile.setEventListeners();
 
 const profileValidator = new FormValidator(config, submitFormEditProfileNode);
 profileValidator.enableValidation();

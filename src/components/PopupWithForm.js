@@ -21,23 +21,14 @@ export class PopupWithForm extends Popup {
 
     return inputValues;
   }
-
-  open() {
-    this._popup.classList.add('popup_opened');
-  }
-
+ 
   close() {
     super.close();
     this._form.reset();
-    this._form.removeEventListener('submit', this._submitFormHandlerBinding);
   }
+
   setEventListeners() {
     super.setEventListeners();
-
-    document.addEventListener('keyup', (evt) => {
-      this._handleEscClose(evt);
-    });
-
     this._form.addEventListener('submit', this._submitFormHandlerBinding);
   }
 }
