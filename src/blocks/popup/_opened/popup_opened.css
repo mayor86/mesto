@@ -9,5 +9,6 @@
 }
 .popup_opened {
   display: flex;
-  animation: fade-in 1s;
+  visibility: visible;
+  opacity: 1;
 }
