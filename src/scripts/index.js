@@ -1,25 +1,29 @@
-//import '../pages/index.css';
+/*****************************
+ * Ирина, спасибо вам большое!
+ * Мне интересен мой проект и я обязатеьно займусь плавным открытием Popup, но позже. У нас дедлайн 25.02, а я еще не приступал к 9й проектной.
+*****************************/
+import '../pages/index.css';
 import {
   initialCards
 } from './initial-cards.js';
 import {
   Card
-} from './Card.js';
+} from '../components/Card.js';
 import {
   FormValidator
-} from './FormValidator.js';
+} from '../components/FormValidator.js';
 import {
   Section
-} from './Section.js';
+} from '../components/Section.js';
 import {
   PopupWithImage
-} from './PopupWithImage.js';
+} from '../components/PopupWithImage.js';
 import {
   PopupWithForm
-} from './PopupWithForm.js';
+} from '../components/PopupWithForm.js';
 import {
   UserInfo
-} from './UserInfo.js';
+} from '../components/UserInfo.js';
 
 const config = {
   formSelector: '.popup__container',
@@ -45,7 +49,6 @@ const submitFormAddCardNode = document.querySelector('.popup__container[name*=ad
 
 function handleCardClick(name, link) {
   popupImage.open(name, link);
-  popupImage.setEventListeners();
 }
 
 function createCard(card) {
@@ -102,6 +105,7 @@ const userInfo = new UserInfo({
 });
 
 const popupImage = new PopupWithImage(popupImageSelector);
+popupImage.setEventListeners();
 
 const popupAddCard = new PopupWithForm(popupAddCardSelector, submitPopupAddCardHandler);
 popupAddCard.setEventListeners();
