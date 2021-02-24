@@ -1,5 +1,4 @@
 import '../pages/index.css';
-
 import {
   Card
 } from '../components/Card.js';
