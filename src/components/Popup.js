@@ -2,6 +2,7 @@ export default class Popup {
   constructor(popupSelector) {
     this._popup = document.querySelector(popupSelector);
     this._closeButton = this._popup.querySelector('.popup__close-button');
+    this._submitButton = this._popup.querySelector('.popup__submit-button');
     this._handleEscCloseBindings = this._handleEscClose.bind(this);
   }
 
@@ -36,4 +37,9 @@ export default class Popup {
       this.close();
     }
   }
+
+  setSubmitButtonCaption(caption) {
+    this._submitButton.textContent = caption;
+  }
+
 }

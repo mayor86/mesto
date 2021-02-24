@@ -7,18 +7,21 @@
   <meta name="keywords" content="Сервис Mesto: фотографии" />
   <meta name="author" content="Виталий Майоров" />
   <title>Mesto</title>
-<!--  <link rel="stylesheet" type="text/css" href="pages/index.css" /> -->
+  <link rel="stylesheet" type="text/css" href="pages/index.css" />
 </head>
 
 <body class="root">
   <div class="page">
     <header class="header">
       <img src="<%=require('./images/mesto-logo.svg')%>" alt="Mesto логотип" class="logo">
+      <!-- <img src="./images/mesto-logo.svg" alt="Mesto логотип" class="logo"> -->
     </header>
     <main class="content">
       <section class="profile">
         <div class="profile__info">
-          <img src="<%=require('./images/profile-avatar.png')%>" alt="Аватар" class="profile__avatar">
+          <img src="<%=require('./images/profile-avatar.png')%>" alt="Аватар" class="profile__avatar"> -->
+          <!--<img src="./images/profile-avatar.png" alt="Аватар" class="profile__avatar"> -->
+          <button class="profile__avatar-edit-button" type="button"></button>
           <div class="profile__zone">
             <div class="profile__zone-header">
               <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -39,9 +42,11 @@
   <div class="popup popup-edit-profile">
     <form class="popup__container" name="edit-profile-popup" novalidate>
       <h3 class="popup__title">Редактировать профиль</h3>
-      <input id="profile-name-input" type="text" class="popup__input-el" name="profile-name" minlength="2" maxlength="40" placeholder="Имя" required>
+      <input id="profile-name-input" type="text" class="popup__input-el" name="profile-name" minlength="2"
+        maxlength="40" placeholder="Имя" required>
       <span class="profile-name-input-error popup__input-el-error">Необходимо заполнить данное поле</span>
-      <input id="profile-job-input" type="text" class="popup__input-el" name="profile-job" minlength="2" maxlength="200" placeholder="О себе" required>
+      <input id="profile-job-input" type="text" class="popup__input-el" name="profile-job" minlength="2" maxlength="200"
+        placeholder="О себе" required>
       <span class="profile-job-input-error popup__input-el-error">Необходимо заполнить данное поле</span>
       <button type="submit" class="popup__submit-button">Сохранить</button>
       <button type="button" class="popup__close-button popup-edit-profile__close-button"></button>
@@ -51,9 +56,11 @@
   <div class="popup popup-add-card">
     <form class="popup__container" name="add-card-popup" novalidate>
       <h3 class="popup__title">Новое место</h3>
-      <input id="place-name-input" type="text" class="popup__input-el" name="place-name" placeholder="Название" minlength="2" maxlength="30" required>
+      <input id="place-name-input" type="text" class="popup__input-el" name="place-name" placeholder="Название"
+        minlength="2" maxlength="30" required>
       <span class="place-name-input-error popup__input-el-error">Необходимо заполнить данное поле</span>
-      <input id="link-image-input" type="url" class="popup__input-el" name="link-image" placeholder="Ссылка на картинку" required>
+      <input id="link-image-input" type="url" class="popup__input-el" name="link-image" placeholder="Ссылка на картинку"
+        required>
       <span class="link-image-input-error popup__input-el-error">Необходимо заполнить данное поле</span>
       <button type="submit" class="popup__submit-button popup__submit-button_disabled" disabled="true">Создать</button>
       <button type="button" class="popup__close-button popup-add-card__close-button"></button>
@@ -62,19 +69,44 @@
 
   <div class="popup popup-image popup_closed">
     <div class="popup-image__container">
-      <img class="popup-image__image" alt="Фото места" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg">
+      <img class="popup-image__image" alt="Фото места"
+        src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg">
       <h3 class="popup-image__title">Москва</h3>
       <button type="button" class="popup__close-button popup-image__close-button"></button>
     </div>
   </div>
 
+  <div class="popup popup-confirmation">
+    <form class="popup__container">
+      <h3 class="popup__title">Вы уверены?</h3>
+      <button type="submit" class="popup__submit-button">Да</button>
+      <button type="button" class="popup__close-button popup-confirm__close-button"></button>
+    </form>
+  </div>
+
+  <div class="popup popup-avatar">
+    <form class="popup__container" name="avatar-popup" novalidate>
+      <h3 class="popup__title">Обновить аватар</h3>
+      <input id="link-avatar-input" type="url" class="popup__input-el" name="link-avatar" placeholder="Ссылка на аватар"
+        required>
+      <span class="link-avatar-input-error popup__input-el-error">Необходимо заполнить данное поле</span>
+      <button type="submit" class="popup__submit-button">Сохранить</button>
+      <button type="button" class="popup__close-button"></button>
+    </form>
+  </div>
+
   <template id="element-item">
     <div class="elements__item">
-      <img class="elements__photo" alt="Фото места" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg">
+      <img class="elements__photo" alt="Фото места"
+        src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg">
       <div class="elements__title-zone">
         <h3 class="elements__title"></h3>
-        <button class="elements__like" type="button"></button>
+        <div class="elements__like-zone">
+          <button class="elements__like" type="button"></button>
+          <div class="elements__like-count">0</div>
+        </div>
       </div>
+
       <button type="button" class="elements__remove-item"></button>
     </div>
   </template>
@@ -84,9 +116,9 @@
   <script type="module" src="scripts/FormValidator.js"></script>
   <script type="module" src="scripts/Popup.js"></script>
   <script type="module" src="scripts/PopupWithImage.js"></script>
+  <script type="module" src="scripts/Api.js"></script>
 -->
   <script type="module" src="scripts/index.js"></script>
-
 </body>
 
 </html>
