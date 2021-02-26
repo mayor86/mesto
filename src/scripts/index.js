@@ -43,15 +43,13 @@ const popupConfirmationSelector = '.popup-confirmation';
 const popupAvatarSelector = '.popup-avatar'
 const titleProfileSelector = '.profile__title';
 const subTitleProfileSelector = '.profile__subtitle';
+const avatarSelector = '.profile__avatar';
 const popupNameNode = document.querySelector('.popup__input-el[name*=profile-name]');
 const popupJobNode = document.querySelector('.popup__input-el[name*=profile-job]');
 const submitFormEditProfileNode = document.querySelector('.popup__container[name*=edit-profile-popup]');
 const submitFormAddCardNode = document.querySelector('.popup__container[name*=add-card-popup]');
 const submitFormChangeAvatarNode = document.querySelector('.popup__container[name*=avatar-popup]');
-const profileAvatar = document.querySelector('.profile__avatar');
 const editProfileAvatarButton = document.querySelector('.profile__avatar-edit-button');
-const profileName = document.querySelector('.profile__title');
-const profileAbout = document.querySelector('.profile__subtitle');
 
 function handleCardClick(name, link) {
   popupImage.open(name, link);
@@ -72,24 +70,27 @@ function handleRemoveButtonClick(cardId, parentElement) {
   }
 }
 
-function handleLikeButtonClick(cardId) {
-  if (!this._isLikeCard()) {
+function handleLikeButtonClick(cardId, card) {
+  if (!card.isLikeCard()) {
     api.setCardLike(cardId)
       .then((res) => {
-        this._element.querySelector('.elements__like').classList.toggle('popup__like_checked');
-        this._setLikeCount(res.likes.length);
+        card.setLikeCount(res.likes.length);
       });
   } else {
     api.setCardDislike(cardId)
       .then((res) => {
-        this._element.querySelector('.elements__like').classList.toggle('popup__like_checked');
-        this._setLikeCount(res.likes.length);
+        card.setLikeCount(res.likes.length);
       });
   }
 }
 
 function createCard(card) {
-  const newCard = new Card(card, '#element-item', handleCardClick, userInfo.getId(), handleRemoveButtonClick, handleLikeButtonClick);
+  const newCard = new Card(card, '#element-item', {
+    handleCardClick: handleCardClick,
+    userId: userInfo.getId(),
+    handleRemoveButtonClick: handleRemoveButtonClick,
+    handleLikeButtonClick: handleLikeButtonClick
+  });
   return newCard.generateCard();
 }
 
@@ -116,13 +117,9 @@ function showEditProfilePopup() {
 function submitPopupEditProfileHandler(data) {
   popupEditProfile.setSubmitButtonCaption('Загрузка...');
 
-  userInfo.setUserInfo({
-    name: data["profile-name"],
-    title: data["profile-job"]
-  });
-
   api.sendUserInfo(data["profile-name"], data["profile-job"])
     .then((res) => {
+      userInfo.setUserInfo(res);
       popupEditProfile.setSubmitButtonCaption('Сохранить');
     });
 }
@@ -132,16 +129,7 @@ function submitPopupAddCardHandler(data) {
 
   api.sendNewCard(data["place-name"], data["link-image"])
     .then((res) => {
-      const card = {};
-      card._id = res._id;
-      card.likes = [];
-      card.owner = {
-        _id: userInfo.getId()
-      }
-      card.name = data["place-name"];
-      card.link = data["link-image"];
-
-      newSection.addItem(createCard(card));
+      newSection.addItem(createCard(res));
 
       popupAddCard.close();
       popupAddCard.setSubmitButtonCaption('Создать');
@@ -153,7 +141,7 @@ function submitPopupAvatarHandler(data) {
 
   api.changeAvatar(data["link-avatar"])
     .then((res) => {
-      profileAvatar.src = res.avatar;
+      userInfo.setUserInfo(res);
       popupAvatar.setSubmitButtonCaption('Сохранить');
     })
 }
@@ -168,7 +156,8 @@ const newSection = new Section({
 
 const userInfo = new UserInfo({
   nameSelector: titleProfileSelector,
-  titleSelector: subTitleProfileSelector
+  titleSelector: subTitleProfileSelector,
+  avatarSelector: avatarSelector
 });
 
 const popupImage = new PopupWithImage(popupImageSelector);
@@ -202,12 +191,8 @@ api.getInitialCards()
   });
 
 api.getUserInfo()
-  .then((data) => {
-    profileAvatar.src = data.avatar;
-    profileName.textContent = data.name;
-    profileAbout.textContent = data.about;
-
-    userInfo.setId(data._id);
+  .then((res) => {
+    userInfo.setUserInfo(res);
   })
 
 editButton.addEventListener('click', showEditProfilePopup);

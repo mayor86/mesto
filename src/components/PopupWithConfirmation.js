@@ -18,4 +18,8 @@ export class PopupWithConfirmation extends Popup {
   setSubmitAction(submitFormHandler) {
     this._submitFormHandler = submitFormHandler;
   }
+
+  setSubmitButtonCaption(caption) {
+    this._submitButton.textContent = caption;
+  }
 }

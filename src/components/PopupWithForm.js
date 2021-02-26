@@ -10,7 +10,7 @@ export class PopupWithForm extends Popup {
       submitFormHandler(this._getInputValues());
       this.close();
     }
-    this._submitFormHandlerBinding = this._submitFormHandler.bind(this);
+ //   this._submitFormHandlerBinding = this._submitFormHandler.bind(this);
   }
 
   _getInputValues() {
@@ -22,7 +22,7 @@ export class PopupWithForm extends Popup {
 
     return inputValues;
   }
- 
+
   close() {
     super.close();
     this._form.reset();
@@ -30,6 +30,10 @@ export class PopupWithForm extends Popup {
 
   setEventListeners() {
     super.setEventListeners();
-    this._form.addEventListener('submit', this._submitFormHandlerBinding);
+    this._form.addEventListener('submit', this._submitFormHandler);
+  }
+
+  setSubmitButtonCaption(caption) {
+    this._submitButton.textContent = caption;
   }
 }

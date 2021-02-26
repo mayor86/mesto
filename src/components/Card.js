@@ -1,15 +1,16 @@
 export class Card {
-  constructor(data, cardSelector, hahdleCardClick, userId, handleRemoveButtonClick, handleLikeButtonClick) {
+  constructor(data, cardSelector, handler) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
-    this._hahdleCardClick = hahdleCardClick;
-    this._handleRemoveButtonClick = handleRemoveButtonClick;
-    this._handleLikeButtonClick = handleLikeButtonClick;
-    this._likesCount = data.likes.length;
+    this._hahdleCardClick = handler.handleCardClick;
+    this._handleRemoveButtonClick = handler.handleRemoveButtonClick;
+    this._handleLikeButtonClick = handler.handleLikeButtonClick;
+    this._likes = data.likes;
     this._ownerId = data.owner._id;
-    this._userId = userId;
+    this._userId = handler.userId;
     this._id = data._id;
+    this._isLiked = '0';
   }
 
   // формирование шаблона карточки
@@ -34,7 +35,10 @@ export class Card {
     this._element.querySelector('.elements__title').textContent = this._name;
     this._cardImage.alt = `Фото: ${this._name}`;
     this._cardImage.src = this._link;
-    this._cardLikesCount.textContent = this._likesCount;
+    this._cardLikesCount.textContent = this._likes.length;
+    if (this._isMyLiked()) {
+      this._setLike();
+    }
     this._removeButtonRemove();
 
     return this._element;
@@ -56,7 +60,7 @@ export class Card {
   }
 
   _setLikeHandler() {
-    this._handleLikeButtonClick(this._id);
+    this._handleLikeButtonClick(this._id, this);
   }
 
   _removeCard() {
@@ -73,12 +77,21 @@ export class Card {
     return this._ownerId === this._userId;
   }
 
-  _isLikeCard() {
+  isLikeCard() {
     return this._element.querySelector('.elements__like').classList.contains('popup__like_checked');
   }
 
-  _setLikeCount(likeCount) {
+  _isMyLiked() {
+    return this._likes.find(like => like._id === this._userId);
+  }
+
+  _setLike() {
+    this._element.querySelector('.elements__like').classList.add('popup__like_checked');
+  }
+
+  setLikeCount(likeCount) {
     this._cardLikesCount = this._element.querySelector('.elements__like-count');
     this._cardLikesCount.textContent = likeCount;
+    this._element.querySelector('.elements__like').classList.toggle('popup__like_checked');
   }
 }

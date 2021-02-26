@@ -11,12 +11,7 @@ export class Api {
           authorization: this._token
         }
       })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      .then(this._checkResponse)
       .catch((err) => {
         console.log('Ошибка. Запрос Api.getInitialCards() не выполнен. Текст ошибки: ' + err);
       });
@@ -29,12 +24,7 @@ export class Api {
           authorization: this._token
         }
       })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      .then(this._checkResponse)
       .catch((err) => {
         console.log('Ошибка. Запрос Api.getUserInfo() не выполнен. Текст ошибки: ' + err);
       });
@@ -52,12 +42,7 @@ export class Api {
           about: about
         })
       })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      .then(this._checkResponse)
       .catch((err) => {
         console.log('Ошибка. Запрос Api.saveUserInfo() не выполнен. Текст ошибки: ' + err);
       });
@@ -74,12 +59,7 @@ export class Api {
           avatar: avatar
         })
       })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      .then(this._checkResponse)
       .catch((err) => {
         console.log('Ошибка. Запрос Api.changeAvatar() не выполнен. Текст ошибки: ' + err);
       });
@@ -97,12 +77,7 @@ export class Api {
           link: link,
         })
       })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      .then(this._checkResponse)
       .catch((err) => {
         console.log('Ошибка. Запрос Api.sendNewCard() не выполнен. Текст ошибки: ' + err);
       });
@@ -115,12 +90,7 @@ export class Api {
           authorization: this._token,
         }
       })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      .then(this._checkResponse)
       .catch((err) => {
         console.log('Ошибка. Запрос Api.deleteCard() не выполнен. Текст ошибки: ' + err);
       });
@@ -133,12 +103,7 @@ export class Api {
           authorization: this._token,
         }
       })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      .then(this._checkResponse)
       .catch((err) => {
         console.log('Ошибка. Запрос Api.setCardLike() не выполнен. Текст ошибки: ' + err);
       });
@@ -151,14 +116,16 @@ export class Api {
           authorization: this._token,
         }
       })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-      })
+      .then(this._checkResponse)
       .catch((err) => {
         console.log('Ошибка. Запрос Api.setCardDislike() не выполнен. Текст ошибки: ' + err);
       });
+  }
+
+  _checkResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка ${res.status}`);
   }
 }

@@ -37,9 +37,4 @@ export default class Popup {
       this.close();
     }
   }
-
-  setSubmitButtonCaption(caption) {
-    this._submitButton.textContent = caption;
-  }
-
 }
